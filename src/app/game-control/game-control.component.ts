@@ -1,22 +1,27 @@
 import { NumberSymbol } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, interval, Subject } from 'rxjs';
+import { Component, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { BehaviorSubject, interval, Subject, Subscription } from 'rxjs';
+import { repeat, take, tap, map, share } from 'rxjs/operators';
 
 @Component({
   selector: 'app-game-control',
-  templateUrl:'./game-control.component.html',
+  templateUrl: './game-control.component.html',
   styleUrls: ['./game-control.component.css']
 })
-export class GameControlComponent implements OnInit {
+export class GameControlComponent implements OnInit, OnDestroy {
 
-  numbers = interval(1000);
-  takeNum = this.numbers;
+  @Output() number$ = interval(1000).pipe(map(_ => _+1), share());
 
-  
+  myNumbers =  this.number$.subscribe(x => console.log(x));
 
   constructor() { }
+  ngOnDestroy(): void {
+    this.myNumbers.unsubscribe();
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
+
+
   }
 
 }
