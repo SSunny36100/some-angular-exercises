@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-even',
@@ -7,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class EvenComponent implements OnInit {
   
-  @Input('numberz') numbersEmitted = 'dsadsaasdw';
+  @Input() evenNumbers : number[] = [];
+
   @Input() test = 'test';
 
   constructor() { }
