@@ -7,11 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class EvenComponent implements OnInit {
   
-  @Input('numberS') numbersEmitted : any='';
+  @Input('numberz') numbersEmitted = 'dsadsaasdw';
+  @Input() test = 'test';
 
   constructor() { }
 
   ngOnInit(): void {
-  }
+  } 
 
 }
